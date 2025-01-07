@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html
     lang="en"
@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-        <title>Demo : Dashboard - Analytics | sneat - Bootstrap Dashboard PRO</title>
+        <title>Painel Interativo COVID-19: Casos e Mortes ao Redor do Mundo</title>
 
         <meta name="description" content="" />
 
