@@ -49,3 +49,32 @@
         <script src=<?php echo base_url('/assets/js/config.js') ?>></script>
     </head>
     <body>
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <!-- Examples -->
+            <div class="row mb-12 g-6" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <div class="col-md-6 col-lg-4">
+                    <a href='<?php echo site_url("/dashboard/monitoramento"); ?>'>
+                        <div class="card h-100" >
+                            <div class="card-body" style="align-content: center; text-align:center;">
+                                <h5 class="card-title">Dashboard de Monitoramento</h5>
+                                <p class="card-text">
+                                    Informações sobre o impacto do COVID-19 nos países Brasil, Canadá e Australia.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href='<?php echo site_url("/dashboard/comparativo"); ?>'>
+                        <div class="card h-100" >
+                            <div class="card-body" style="align-content: center; text-align:center;">
+                                <h5 class="card-title">Comparar impacto do COVID-19 entre países</h5>
+                                <p class="card-text">
+                                    Selecione dois países quaisquer e descubra a taxa de mortes de COVID-19 entre eles.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
