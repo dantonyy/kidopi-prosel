@@ -2,9 +2,9 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 07, 2025 at 12:24 PM
--- Server version: 8.0.24
+-- Host: 127.0.0.1
+-- Generation Time: Jan 10, 2025 at 10:49 PM
+-- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `api_access_log` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `pais` varchar(100) NOT NULL,
   `data_hora` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -51,7 +51,7 @@ ALTER TABLE `api_access_log`
 -- AUTO_INCREMENT for table `api_access_log`
 --
 ALTER TABLE `api_access_log`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
