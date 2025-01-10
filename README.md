@@ -10,3 +10,7 @@
 - PHP 7.4.33
 - CodeIgniter 3.1.13
 - MySQL 8.0.24
+
+### Observações importantes:
+- XAMPP com PHP 7.4.33 : https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.33/
+- Necessário ter criado a tabela 'kidopi_prosel' para funcionamento do sistema. Ou deve-se alterar as configurações de conexão ao banco de dados no arquivo application/config/database.php
