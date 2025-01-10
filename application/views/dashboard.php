@@ -118,7 +118,8 @@
             // Após todo o processo, torna visivel a DIV para exibir os dados para o usuário
             document.getElementById('card_resultados').style.display = 'block';
             table.style.display = 'table';
-            getLastAccess(country);
+            getUltimoAcesso();
+            setUltimoAcesso(country);
         }
     });
   }
@@ -215,7 +216,12 @@
   }
 
     // Busca e mostra as informações referentes ao ultimo acesso no sistema
-    function getLastAccess(country) {
+    function setUltimoAcesso(country) {
+        $.ajaxSetup({ async: false });
+        $.post("<?php echo site_url('dashboard/setUltimoAcesso/');?>", { country: country }, function(response) {});
+    };
+    // Busca e mostra as informações referentes ao ultimo acesso no sistema
+    function getUltimoAcesso() {
         $.ajaxSetup({ async: false });
         $.post("<?php echo site_url('dashboard/getUltimoAcesso/');?>", {}, function(response) {
             if (response) {
