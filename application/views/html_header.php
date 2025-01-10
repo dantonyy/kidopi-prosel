@@ -49,9 +49,10 @@
         <script src=<?php echo base_url('/assets/js/config.js') ?>></script>
     </head>
     <body>
+        
         <div class="container-xxl flex-grow-1 container-p-y">
-            <!-- Examples -->
             <div class="row mb-12 g-6" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <!-- Botão em forma de card para acessar o Dashboard de monitoramento -->
                 <div class="col-md-6 col-lg-4">
                     <a href='<?php echo site_url("/dashboard/monitoramento"); ?>'>
                         <div class="card h-100" >
@@ -64,6 +65,8 @@
                         </div>
                     </a>
                 </div>
+
+                <!-- Botão em forma de card para acessar o Comparativo entre dois países escolhidos pelo usuário -->
                 <div class="col-md-6 col-lg-4">
                     <a href='<?php echo site_url("/dashboard/comparativo"); ?>'>
                         <div class="card h-100" >
@@ -76,5 +79,6 @@
                         </div>
                     </a>
                 </div>
+
             </div>
         </div>

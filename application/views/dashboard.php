@@ -66,31 +66,37 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
+    // Define as variaveis estado, confirmados e obitos como constantes para serem alteradas e utilizadas ao decorrer do uso do sistema
     const estados = [];
     const confirmados = [];
     const obitos = [];
 
   function getDados() {
+    // 1. Busca qual foi o país selecionado pelo usuário
     const country = document.getElementById('country-select').value;
 
+    // 2. se comunica com o controller para buscar os dados do país em questão
     $.ajaxSetup({ async: false });
     $.post("<?php echo site_url('dashboard/getDados/');?>", { country: country }, function(response) {
         if (response) {
+            // 3. caso receba a resposta, segue com o programa
+            // 4. Pega elementos que serão trabalhados neste método
             const data = JSON.parse(response);
             const countryTitle = document.getElementById('country-title');
             const summary = document.getElementById('summary');
             const table = document.getElementById('state-table');
             const tbody = table.querySelector('tbody');
 
+            // 5. Define titulo e breve descrição da tabela
             countryTitle.textContent = `COVID-19 Data: ${country}`;
             summary.textContent = `Total de casos confirmados: ${formatNumber(data.total_confirmados)} | Total de Óbitos: ${formatNumber(data.total_mortes)}`;
 
             tbody.innerHTML = '';
-            // Limpa os arrays globais
             estados.length = 0; 
             confirmados.length = 0;
             obitos.length = 0;
 
+            // 6. Para cada estado retornado pela API, adiciona os dados de casos confirmados e óbitos, criando também as linhas da tabela
             data.estados.forEach(state => {
                 estados.push(state.ProvinciaEstado);
                 confirmados.push(state.Confirmados);
@@ -105,9 +111,11 @@
                 tbody.appendChild(row);
             });
 
+            // Chama os métodos para criação do gráfico de barras e o gráfico Doughnut
             graficoBarras(confirmados);
             graficoDoughnut(obitos);
 
+            // Após todo o processo, torna visivel a DIV para exibir os dados para o usuário
             document.getElementById('card_resultados').style.display = 'block';
             table.style.display = 'table';
             getLastAccess(country);
@@ -118,6 +126,7 @@
   function graficoBarras(confirmados) {
     const canvas = document.getElementById('covid_chart').getContext("2d");
     const ctx = Chart.getChart("covid_chart");
+    // Verifica se o gráfico já existe, e caso existe destroi antes de criar um novo
     if (ctx != undefined) {
       ctx.destroy();
     }
@@ -185,9 +194,10 @@
       options: {
         responsive: true,
         plugins: {
+          // Título do gráfico
           title: {
               display: true,
-              text: 'Comparativo de mortes por COVID-19 em cada estado', // Título do gráfico
+              text: 'Comparativo de mortes por COVID-19 em cada estado', 
           },
           tooltip: {
           callbacks: {
@@ -204,8 +214,7 @@
     });
   }
 
-
-    // Fetch last access log
+    // Busca e mostra as informações referentes ao ultimo acesso no sistema
     function getLastAccess(country) {
         $.ajaxSetup({ async: false });
         $.post("<?php echo site_url('dashboard/getUltimoAcesso/');?>", {}, function(response) {
@@ -216,6 +225,7 @@
         });
     };
 
+    // Método responsável por formatar o DateTIme que vem do banco de dados, para melhor visualização dos dados na View
     function formatDateTime(datetime) {
       if (!datetime || !/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/.test(datetime)) {
         console.error("Formato inválido. Use 'YYYY-MM-DD HH:mm:ss'.");
@@ -227,6 +237,7 @@
       return `${dia}/${mes}/${ano} - ${hora}`;
     }
 
+    // Método que formata os números garantindo que será exibido corretamente a casa dos milhares
     function formatNumber(number) {
         if (typeof number === 'undefined' || isNaN(number)) {
             return 0;
